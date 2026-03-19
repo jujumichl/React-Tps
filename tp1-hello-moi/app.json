@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tp1-hello-moi",
-    "slug": "tp1-hello-moi",
+    "name": "hello",
+    "slug": "hello",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
