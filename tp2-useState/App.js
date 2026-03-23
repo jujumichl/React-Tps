@@ -4,12 +4,15 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 export default function App() {
   const [nom, setNom] = useState('');
   const [mess, setMess] = useState('');
-  let msgBienvenue = nom.trim() === '' ? `Hello moi ` : `Hello ${nom} `;
-  let msgPerso = mess.trim() === '' ? `` : `${mess} `;
+  let color;
+  let msgBienvenue = nom.trim() === '' ? `Hello moi ` : `Hello ${nom.trim()} `;
+  let msgPerso = mess.trim() === '' ? `` : `${mess.trim()} `;
   let maxChar = mess.length;
+  color = maxChar > 3 ? '#00FF00' : maxChar === 0 ? '#3b5bdb' : '#FF0000';
+
   return (
     <View style={styles.container}>
-      <Text style={styles.titre}>
+      <Text style={[styles.titreDefault, {color: `${color}`}]}>
         {msgBienvenue}{msgPerso}!
       </Text>
 
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 24,
   },
-  titre: {
+  titreDefault: {
     fontSize: 36,
     fontWeight: 'bold',
     color: '#3b5bdb',
