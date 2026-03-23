@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Switch } from 'react-native';
 
 export default function App() {
   const [nom, setNom] = useState('');
   const [mess, setMess] = useState('');
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   let color;
   let msgBienvenue = nom.trim() === '' ? `Hello moi ` : `Hello ${nom.trim()} `;
   let msgPerso = mess.trim() === '' ? `` : `${mess.trim()} `;
@@ -29,9 +31,13 @@ export default function App() {
         value={mess} 
         maxLength={20}
       />
-      <Text style={styles.maxChar}>
+      <Text style={[styles.maxChar, {display: `${isEnabled ? 'flex' : 'none'}`}]}>
         {maxChar}/20
       </Text>
+      <Switch trackColor={{false: '#767577', true: '#4FFC49'}}
+          thumbColor={isEnabled ? '#AFFCAC' : '#f4f3f4'}
+          onValueChange={toggleSwitch}
+          value={isEnabled}/>
       <Button
         onPress={() => { setNom(""), setMess("")}}
         title="Erase"
