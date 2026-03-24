@@ -5,9 +5,9 @@ export default function DetailsScreen() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bienvenue sur l'Accueil !</Text>
-      <Button  title="Aller aux Détails"
-               onPress={() => navigation.navigate('Details')}
+      <Text style={styles.title}>Ecran de détails</Text>
+      <Button  title="retour a l'accueil"
+               onPress={() => navigation.goBack()}
       />
     </View>
   );
