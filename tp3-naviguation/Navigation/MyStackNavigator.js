@@ -6,9 +6,16 @@ const MyStack = createNativeStackNavigator();
 
 export default function MyStackNavigator() {
   return (
-      <MyStack.Navigator initialRouteName='Home'>
-        <MyStack.Screen name="Details" component={DetailsScreen} />
-        <MyStack.Screen name="Home" component={HomeScreen} />
-      </MyStack.Navigator>
+    <MyStack.Navigator initialRouteName='Home' screenOptions={{
+      headerStyle: { backgroundColor: 'darkorange' },
+      headerTintColor: 'white'
+    }}>
+
+      <MyStack.Screen name="Details" component={DetailsScreen}/>
+      <MyStack.Screen
+        name="Home"
+        component={HomeScreen}
+      />
+    </MyStack.Navigator>
   );
 }
