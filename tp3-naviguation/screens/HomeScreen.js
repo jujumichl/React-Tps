@@ -7,7 +7,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Bienvenue sur l'Accueil !</Text>
       <Button  title="Aller aux Détails"
-               onPress={() => navigation.navigate('Details')}
+               onPress={() => navigation.navigate('Details', {itemId: 50, message: 'Hello world !'})}
       />
     </View>
   );

@@ -1,11 +1,16 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function DetailsScreen() { 
+export default function DetailsScreen({route}) {
+  // Récupérer les param passés depuis l'écran précédent
+  const {itemId} = route.params;
+  const {message} = route.params;
+  // équivalent à : const itemId = route.params.itemId;
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ecran de détails</Text>
+      <Text style={styles.title}>Ecran de détail de l'article {itemId}</Text>
+      <Text style={styles.title}>{message}</Text>
       <Button  title="retour a l'accueil"
                onPress={() => navigation.goBack()}
       />
