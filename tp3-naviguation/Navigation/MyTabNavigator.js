@@ -3,18 +3,39 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import ProfileScreen from '../screens/ProfileScreen';
 // import SettingsScreen from '../screens/SettingsScreen';
 import SkeletonScreen from "../screens/SkeletonScreen";
+import { Ionicons } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();
+// Correspondance onglet → nom d'icône
+const ICONS = {
+    Feed: 'home',
+    Profile: 'person',
+    Settings: 'settings',
+};
+
 
 export default function MyTabNavigator() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={({ route }) => ({   // ← fonction, pas objet
+                headerShown: false,
+                tabBarActiveTintColor: 'tomato',
+                tabBarInactiveTintColor: 'gray',
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons
+                        name='home'
+                        size={size}
+                        color={color}
+                    />
+                ),
+            })}
+        >
             <Tab.Screen name="Feed" component={SkeletonScreen}
-                options={{ title: 'Accueil'}} initialParams={{message: "Feed Screens"}}/>
+                options={{ title: 'Accueil' }} initialParams={{ message: "Feed Screens" }} />
             <Tab.Screen name="Profile" component={SkeletonScreen}
-                options={{ title: 'Profil' }} initialParams={{message: "Profile Screens"}}/>
+                options={{ title: 'Profil' }} initialParams={{ message: "Profile Screens" }} />
             <Tab.Screen name="Settings" component={SkeletonScreen}
-                options={{ title: 'Paramètres' }} initialParams={{message: "Settings Screens"}}/>
+                options={{ title: 'Paramètres' }} initialParams={{ message: "Settings Screens" }} />
         </Tab.Navigator>
     );
 }
