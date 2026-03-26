@@ -3,23 +3,27 @@ import { stations } from './data/stations';
 import ItemStation from './components/ItemStation';
 
 export default function App() {
-  function Separateur () {
+  function compareTo(s1, s2){
+    return s2.nombrevelosdisponibles - s1.nombrevelosdisponibles;
+  }
+  function Separateur() {
     return (
-      <View style={{ height: 1, backgroundColor: '#ddd', marginVertical: 2 }}    	/>
+      <View style={{ height: 1, backgroundColor: '#ddd', marginVertical: 2 }} />
     );
   }
-  function Header(){
-    return(
+  function Header() {
+    return (
       <Text style={styles.titre}>Station de vélos : {stations.length}</Text>
     )
   }
+  const displayedStations = stations.sort((s1, s2) => compareTo(s1, s2));
 
   return (
     <View style={styles.container}>
       {/* <Text style={styles.titre}>Stations de vélos</Text> */}
- 
+
       <FlatList
-        data={stations}                         // on passe le tableau d'objets importés depuis stations.js
+        data={displayedStations}                         // on passe le tableau d'objets importés depuis stations.js
         keyExtractor={(item) =>                 // React a besoin d'une clé unique par élément pour optimiser les re-rendus. On utilise idstation converti en string.
           item.idstation.toString()}
         ItemSeparatorComponent={Separateur}
@@ -31,7 +35,7 @@ export default function App() {
     </View>
   );
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
