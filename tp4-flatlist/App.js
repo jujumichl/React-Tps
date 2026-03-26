@@ -1,22 +1,31 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TextInput } from 'react-native';
 import { stations } from './data/stations';
 import ItemStation from './components/ItemStation';
+import { useState } from 'react';
 
 export default function App() {
-  function compareTo(s1, s2){
+  const [searchingText, setSearchingText] = useState('');
+  const displayedStations = stations.sort(compareTo).filter(s => s.nom.toLowerCase().includes(searchingText.toLowerCase()));
+
+  function compareTo(s1, s2) {
     return s2.nombrevelosdisponibles - s1.nombrevelosdisponibles;
   }
+
   function Separateur() {
     return (
       <View style={{ height: 1, backgroundColor: '#ddd', marginVertical: 2 }} />
     );
   }
+
   function Header() {
     return (
-      <Text style={styles.titre}>Station de vélos : {stations.length}</Text>
+      <View>
+        <Text style={styles.titre}>Station de vélos : {stations.length}</Text>
+        <TextInput onChangeText={setSearchingText} value={searchingText} />
+      </View>
     )
   }
-  const displayedStations = stations.sort((s1, s2) => compareTo(s1, s2));
+
 
   return (
     <View style={styles.container}>
