@@ -23,7 +23,7 @@ export default function MyTabNavigator() {
                 tabBarInactiveTintColor: 'gray',
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons
-                        name='home'
+                        name={ICONS[route.name]}
                         size={size}
                         color={color}
                     />
