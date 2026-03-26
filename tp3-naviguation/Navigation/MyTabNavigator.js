@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import SettingsScreen from '../screens/SettingsScreen';
 import SkeletonScreen from "../screens/SkeletonScreen";
 import { Ionicons } from '@expo/vector-icons'; 
+import MyStackNavigator from "./MyStackNavigator";
 
 const Tab = createBottomTabNavigator();
 // Correspondance onglet → nom d'icône
@@ -30,7 +31,7 @@ export default function MyTabNavigator() {
                 ),
             })}
         >
-            <Tab.Screen name="Feed" component={SkeletonScreen}
+            <Tab.Screen name="Feed" component={MyStackNavigator}
                 options={{ title: 'Accueil' }} initialParams={{ message: "Feed Screens" }} />
             <Tab.Screen name="Profile" component={SkeletonScreen}
                 options={{ title: 'Profil' }} initialParams={{ message: "Profile Screens" }} />
