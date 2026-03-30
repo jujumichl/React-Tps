@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Button, Linking } from 'react-native';
 
 export default function ItemStation({ station }) {
     function handlePress() {
@@ -14,6 +14,7 @@ export default function ItemStation({ station }) {
                     <Text style={styles.nom}>{station.nom}</Text>
                     <Text style={styles.id}>{station.coordonnees.lat}, {station.coordonnees.lon}</Text>
                 </View>
+                {/* <Button title="appeler" onPress={()=>{Linking.openURL('tel:0299112233')}}>APPELER</Button> */}
 
                 {/* Indicateurs */}
                 <View style={styles.indicateurs}>
