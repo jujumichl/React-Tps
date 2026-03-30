@@ -6,7 +6,7 @@ export default function ItemStation({ station }) {
     }
 
     return (
-        <TouchableOpacity >
+        <TouchableOpacity onPress={handlePress}>
             <View style={styles.carte}>
                 {/* En-tete de la carte */}
                 <View style={styles.entete}>

@@ -17,26 +17,18 @@ export default function App() {
     );
   }
 
-  function Header() {
-    return (
-      <View>
-        <Text style={styles.titre}>Station de vélos : {stations.length}</Text>
-        <TextInput onChangeText={setSearchingText} value={searchingText} />
-      </View>
-    )
-  }
-
 
   return (
     <View style={styles.container}>
       {/* <Text style={styles.titre}>Stations de vélos</Text> */}
+      <Text style={styles.titre}>Station de vélos : {stations.length}</Text>
+      <TextInput onChangeText={setSearchingText} value={searchingText} style={styles.search} placeholder='Rechercher une station...'/>
 
       <FlatList
         data={displayedStations}                         // on passe le tableau d'objets importés depuis stations.js
         keyExtractor={(item) =>                 // React a besoin d'une clé unique par élément pour optimiser les re-rendus. On utilise idstation converti en string.
           item.idstation.toString()}
         ItemSeparatorComponent={Separateur}
-        ListHeaderComponent={Header}
         renderItem={({ item }) => (             // Reçoit un objet avec la propriété item. On déstructure avec ({ item }) pour accéder directement à l'objet station.
           <ItemStation station={item} />
         )}
@@ -62,5 +54,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 10,
     color: '#333',
+  },
+  search: {
+    height: 30,
+    display: 'flex',
+    padding: '15px',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderRadius: 3,
   },
 });
