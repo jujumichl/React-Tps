@@ -12,6 +12,7 @@ export default function ItemStation({ station }) {
                 <View style={styles.entete}>
                     <Text style={styles.id}>#{station.idstation}</Text>
                     <Text style={styles.nom}>{station.nom}</Text>
+                    <Text style={styles.id}>{station.coordonnees.lat}, {station.coordonnees.lon}</Text>
                 </View>
 
                 {/* Indicateurs */}
